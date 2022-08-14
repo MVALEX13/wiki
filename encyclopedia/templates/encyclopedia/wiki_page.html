@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ page_name }}
+{% endblock %}
+
+{% block body %}
+
+    <!-- '|safe' pour que django ne remplace pas automatiquement les '<' et laisse le code intact -->
+    {{ entries|safe }}
+
+{% endblock %}

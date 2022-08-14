@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <li> <a href="{% url 'wiki:wiki_page' name=entry %}"> {{ entry }}</a> </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+
+
+<!-- INFOS -->
+<!-- localement, au sein de l'application encyclopedia l'application est appeleée 'wiki'
+comme reference on choisit 'wiki:wiki_page' ce qui indique la vue à consulter lorsque on clique sur le lien
+Ces vues ainsi que leur nom sont définis dans le fichier urls.py
+Cependant la vue la vue 'wiki_page' necessite un argument, on le passe donc grace à la commande name =entry -->
