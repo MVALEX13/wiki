@@ -3,8 +3,6 @@ from . import util
 
 from markdown2 import markdown
 
-import encyclopedia
-
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -14,6 +12,11 @@ def index(request):
 
 
 def wiki_page(request,name):
+
+    ## "Get the value of a GET variable with name 'q', and if it doesn't exist, return 1"
+    if request.GET.get('q'):
+        name = request.GET.get('q')
+
     if (util.get_entry(name)==None):
         return render(request, "encyclopedia/wiki_page.html", {
             "page_name":"Not Found", "entries":"<p> page not found </p>"
